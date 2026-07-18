@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>GolMundial 2026 - Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</h:head>
+
+<h:body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f9;">
+
+    <div style="background-color: #2c3e50; padding: 15px; color: white;">
+        <h2 style="margin: 0;">Panel Administrativo - GolMundial 2026</h2>
+    </div>
+
+    <div style="display: flex; height: calc(100vh - 65px);">
+
+        <div style="width: 250px; background-color: #34495e; padding-top: 20px;">
+            <h:form>
+                <p:menu style="width: 100%; background: transparent; border: none;">
+                    <p:menuitem value="Dashboard" outcome="dashboard" icon="pi pi-home" style="color: white;"/>
+                    <p:menuitem value="Partidos" outcome="partidos" icon="pi pi-calendar" style="color: white;"/>
+                    <p:menuitem value="Resultados" outcome="resultados" icon="pi pi-check-square" style="color: white;"/>
+                    <p:menuitem value="Usuarios" outcome="usuarios" icon="pi pi-users" style="color: white;"/>
+                    <p:menuitem value="Reportes" outcome="reportes" icon="pi pi-chart-bar" style="color: white;"/>
+                    <p:menuitem value="Auditoría" outcome="auditoria" icon="pi pi-list" style="color: white;"/>
+                    <p:menuitem value="Cerrar Sesión" outcome="login" icon="pi pi-sign-out" style="color: #e74c3c;"/>
+                </p:menu>
+            </h:form>
+        </div>
+
+        <div style="flex-grow: 1; padding: 20px;">
+            <ui:insert name="content">
+            </ui:insert>
+        </div>
+
+    </div>
+</h:body>
+</html>
