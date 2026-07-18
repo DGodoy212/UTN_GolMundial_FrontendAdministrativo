@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+
+        <h2 style="color: #2c3e50; margin-top: 0;">Gestión de Partidos</h2>
+
+        <p:panel>
+            <p:dataTable var="partido" value="[]" emptyMessage="No hay partidos programados aún.">
+
+                <p:column headerText="Fecha">
+                    <h:outputText value="-" />
+                </p:column>
+
+                <p:column headerText="Equipo Local">
+                    <h:outputText value="-" />
+                </p:column>
+
+                <p:column headerText="Equipo Visitante">
+                    <h:outputText value="-" />
+                </p:column>
+
+                <p:column headerText="Estadio">
+                    <h:outputText value="-" />
+                </p:column>
+
+                <p:column headerText="Acciones" width="100" style="text-align: center;">
+                    <p:button icon="pi pi-pencil" styleClass="ui-button-warning ui-button-flat" title="Editar"/>
+                    <p:button icon="pi pi-trash" styleClass="ui-button-danger ui-button-flat" title="Eliminar"/>
+                </p:column>
+
+            </p:dataTable>
+        </p:panel>
+
+    </ui:define>
+</ui:composition>
+</html>
