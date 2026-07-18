@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+
+        <h2 style="color: #2c3e50; margin-top: 0;">Registro de Auditoría</h2>
+
+        <h:form>
+            <p:panel>
+                <p:dataTable var="log" value="[]" emptyMessage="No hay registros en la auditoría del sistema.">
+
+                    <p:column headerText="Fecha y Hora" width="180">
+                        <h:outputText value="-" />
+                    </p:column>
+
+                    <p:column headerText="Usuario" width="200">
+                        <h:outputText value="-" />
+                    </p:column>
+
+                    <p:column headerText="Acción Realizada">
+                        <h:outputText value="-" />
+                    </p:column>
+
+                    <p:column headerText="Dirección IP" width="150">
+                        <h:outputText value="-" />
+                    </p:column>
+
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>

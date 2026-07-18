@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+
+        <h2 style="color: #2c3e50; margin-top: 0;">Reportes Estadísticos</h2>
+
+        <h:form>
+            <div style="display: flex; gap: 20px;">
+                <p:panel header="Estado de Partidos" style="flex: 1; text-align: center; padding: 20px;">
+                    <i class="pi pi-chart-pie" style="font-size: 3rem; color: #3498db; margin-bottom: 15px;"></i>
+                    <br/>
+                    <h:outputText value="El gráfico de partidos se cargará aquí." style="color: #7f8c8d;"/>
+                </p:panel>
+
+                <p:panel header="Goles por Torneo" style="flex: 1; text-align: center; padding: 20px;">
+                    <i class="pi pi-chart-bar" style="font-size: 3rem; color: #2ecc71; margin-bottom: 15px;"></i>
+                    <br/>
+                    <h:outputText value="El gráfico de rendimiento se cargará aquí." style="color: #7f8c8d;"/>
+                </p:panel>
+            </div>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>
