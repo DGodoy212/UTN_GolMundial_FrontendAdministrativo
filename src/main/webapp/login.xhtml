@@ -20,16 +20,20 @@
 </h:head>
 <h:body>
     <h:form>
-        <p:panel header="Acceso Administrativo" styleClass="login-box">
+        <!-- Esta etiqueta mostrará la caja roja de error -->
+        <p:messages id="mensajes" showDetail="true" closable="true" />
 
-            <h2 style="color: #2c3e50; margin-top: 0;">GolMundial 2026</h2>
-            <p style="color: #7f8c8d; margin-bottom: 20px;">Ingrese sus credenciales</p>
+        <p:panel header="Iniciar Sesión">
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="username" value="Usuario:" />
+                <p:inputText id="username" value="#{loginBean.username}" required="true" />
 
-            <p:inputText placeholder="Usuario" style="width: 90%; margin-bottom: 15px;" required="true"/>
-            <p:password placeholder="Contraseña" style="width: 90%; margin-bottom: 20px;" required="true"/>
+                <p:outputLabel for="password" value="Contraseña:" />
+                <p:password id="password" value="#{loginBean.password}" required="true" />
+            </h:panelGrid>
 
-            <p:commandButton value="Entrar al Sistema" action="dashboard?faces-redirect=true"
-                             style="width: 90%; background-color: #3498db; border: none; padding: 5px;"/>
+            <!-- Le agregamos update="mensajes" al botón -->
+            <p:commandButton value="Ingresar" action="#{loginBean.login}" update="mensajes" style="margin-top: 10px;" />
         </p:panel>
     </h:form>
 </h:body>

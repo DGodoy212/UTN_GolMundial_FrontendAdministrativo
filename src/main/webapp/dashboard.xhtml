@@ -9,9 +9,27 @@
 
         <h1>Bienvenido al Dashboard</h1>
 
-        <p:panel header="Estado del Sistema">
-            <h:outputText value="El entorno JSF con PrimeFaces está configurado y funcionando perfectamente."/>
-        </p:panel>
+        <p:panelGrid columns="4" layout="grid" styleClass="ui-panelgrid-blank">
+            <p:card style="text-align: center; background-color: #f4f4f4;">
+                <h3>#{dashboardBean.totalPartidos}</h3>
+                <p>Partidos Programados</p>
+            </p:card>
+
+            <p:card style="text-align: center; background-color: #f4f4f4;">
+                <h3>#{dashboardBean.usuariosRegistrados}</h3>
+                <p>Usuarios Activos</p>
+            </p:card>
+
+            <p:card style="text-align: center; background-color: #f4f4f4;">
+                <h3>#{dashboardBean.totalPredicciones}</h3>
+                <p>Predicciones Realizadas</p>
+            </p:card>
+
+            <p:card style="text-align: center; background-color: #f4f4f4;">
+                <h3>#{dashboardBean.monedasCirculando}</h3>
+                <p>UGC en Circulación</p>
+            </p:card>
+        </p:panelGrid>
 
     </ui:define>
 </ui:composition>
