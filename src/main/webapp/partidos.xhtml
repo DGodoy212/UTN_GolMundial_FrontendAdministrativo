@@ -10,22 +10,26 @@
         <h2 style="color: #2c3e50; margin-top: 0;">Gestión de Partidos</h2>
 
         <p:panel>
-            <p:dataTable var="partido" value="[]" emptyMessage="No hay partidos programados aún.">
+            <p:dataTable var="partido" value="#{partidoBean.partidos}" emptyMessage="No hay partidos programados aún.">
 
                 <p:column headerText="Fecha">
-                    <h:outputText value="-" />
+                    <h:outputText value="#{partido.fechaHoraUtc}" />
                 </p:column>
 
                 <p:column headerText="Equipo Local">
-                    <h:outputText value="-" />
+                    <h:outputText value="#{partido.seleccionLocalNombre}" />
                 </p:column>
 
                 <p:column headerText="Equipo Visitante">
-                    <h:outputText value="-" />
+                    <h:outputText value="#{partido.seleccionVisitanteNombre}" />
                 </p:column>
 
                 <p:column headerText="Estadio">
-                    <h:outputText value="-" />
+                    <h:outputText value="#{partido.sedeNombre}" />
+                </p:column>
+
+                <p:column headerText="Estado">
+                    <h:outputText value="#{partido.estado}" />
                 </p:column>
 
                 <p:column headerText="Acciones" width="100" style="text-align: center;">
