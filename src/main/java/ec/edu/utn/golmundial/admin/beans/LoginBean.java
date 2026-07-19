@@ -18,11 +18,15 @@ public class LoginBean implements Serializable {
         if ("admin".equals(username) && "admin".equals(password)) {
             return "dashboard?faces-redirect=true";
         }
-
         // Mensaje de error
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_ERROR, "Acceso Denegado", "Usuario o contraseña incorrectos."));
         return null;
+    }
+
+    public String logout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "login?faces-redirect=true";
     }
 
     public String getUsername() { return username; }

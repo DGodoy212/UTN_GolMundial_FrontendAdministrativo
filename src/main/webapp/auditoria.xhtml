@@ -10,22 +10,24 @@
         <h2 style="color: #2c3e50; margin-top: 0;">Registro de Auditoría</h2>
 
         <h:form>
-            <p:panel>
-                <p:dataTable var="log" value="#{auditoriaBean.registros}" emptyMessage="No hay registros de auditoría.">
-                    <p:column headerText="Fecha (UTC)">
-                        <h:outputText value="#{log.fechaHoraUtc}" />
-                    </p:column>
-                    <p:column headerText="Acción">
-                        <h:outputText value="#{log.accion}" />
-                    </p:column>
-                    <p:column headerText="Entidad afectada">
-                        <h:outputText value="#{log.entidad} (ID: #{log.entidadId})" />
-                    </p:column>
-                    <p:column headerText="Detalle">
-                        <h:outputText value="#{log.detalle}" />
-                    </p:column>
-                </p:dataTable>
-            </p:panel>
+            <div class="ui-fluid">
+                <p:panel>
+                    <p:dataTable var="log" value="#{auditoriaBean.registros}" reflow="true" emptyMessage="No hay registros de auditoría.">
+                        <p:column headerText="Fecha (UTC)">
+                            <h:outputText value="#{log.fechaHoraUtc}" />
+                        </p:column>
+                        <p:column headerText="Acción">
+                            <h:outputText value="#{log.accion}" />
+                        </p:column>
+                        <p:column headerText="Entidad afectada">
+                            <h:outputText value="#{log.entidad} (ID: #{log.entidadId})" />
+                        </p:column>
+                        <p:column headerText="Detalle">
+                            <h:outputText value="#{log.detalle}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </div>
         </h:form>
 
     </ui:define>

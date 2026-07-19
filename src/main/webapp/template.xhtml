@@ -27,7 +27,7 @@
                     <p:menuitem value="Usuarios" outcome="usuarios" icon="pi pi-users" style="color: white;"/>
                     <p:menuitem value="Reportes" outcome="reportes" icon="pi pi-chart-bar" style="color: white;"/>
                     <p:menuitem value="Auditoría" outcome="auditoria" icon="pi pi-list" style="color: white;"/>
-                    <p:menuitem value="Cerrar Sesión" outcome="login" icon="pi pi-sign-out" style="color: #e74c3c;"/>
+                    <p:menuitem value="Cerrar Sesión" action="#{loginBean.logout}" icon="pi pi-sign-out" style="color: #e74c3c;"/>
                 </p:menu>
             </h:form>
         </div>

@@ -10,22 +10,24 @@
         <h2 style="color: #2c3e50; margin-top: 0;">Registro de Resultados</h2>
 
         <h:form>
-            <p:panel>
-                <p:dataTable var="resultado" value="#{resultadoBean.partidosPendientes}" emptyMessage="No hay resultados ingresados aún.">
-                    <p:column headerText="Partido">
-                        <h:outputText value="#{resultado.seleccionLocalNombre} vs #{resultado.seleccionVisitanteNombre}" />
-                    </p:column>
-                    <p:column headerText="Goles Local">
-                        <h:outputText value="#{resultado.golesLocal}" />
-                    </p:column>
-                    <p:column headerText="Goles Visitante">
-                        <h:outputText value="#{resultado.golesVisitante}" />
-                    </p:column>
-                    <p:column headerText="Estado">
-                        <h:outputText value="#{resultado.estado}" />
-                    </p:column>
-                </p:dataTable>
-            </p:panel>
+            <div class="ui-fluid">
+                <p:panel>
+                    <p:dataTable var="resultado" value="#{resultadoBean.partidosPendientes}" reflow="true" emptyMessage="No hay resultados ingresados aún.">
+                        <p:column headerText="Partido">
+                            <h:outputText value="#{resultado.seleccionLocalNombre} vs #{resultado.seleccionVisitanteNombre}" />
+                        </p:column>
+                        <p:column headerText="Goles Local">
+                            <h:outputText value="#{resultado.golesLocal}" />
+                        </p:column>
+                        <p:column headerText="Goles Visitante">
+                            <h:outputText value="#{resultado.golesVisitante}" />
+                        </p:column>
+                        <p:column headerText="Estado">
+                            <h:outputText value="#{resultado.estado}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </div>
         </h:form>
 
     </ui:define>

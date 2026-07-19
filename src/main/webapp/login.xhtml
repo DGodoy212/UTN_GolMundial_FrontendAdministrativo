@@ -23,18 +23,20 @@
         <!-- Esta etiqueta mostrará la caja roja de error -->
         <p:messages id="mensajes" showDetail="true" closable="true" />
 
-        <p:panel header="Iniciar Sesión">
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel for="username" value="Usuario:" />
-                <p:inputText id="username" value="#{loginBean.username}" required="true" />
+        <div class="ui-fluid">
+            <p:panel header="Iniciar Sesión">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="username" value="Usuario:" />
+                    <p:inputText id="username" value="#{loginBean.username}" required="true" />
 
-                <p:outputLabel for="password" value="Contraseña:" />
-                <p:password id="password" value="#{loginBean.password}" required="true" />
-            </h:panelGrid>
+                    <p:outputLabel for="password" value="Contraseña:" />
+                    <p:password id="password" value="#{loginBean.password}" required="true" />
+                </h:panelGrid>
 
-            <!-- Le agregamos update="mensajes" al botón -->
-            <p:commandButton value="Ingresar" action="#{loginBean.login}" update="mensajes" style="margin-top: 10px;" />
-        </p:panel>
+                <!-- Le agregamos update="mensajes" al botón -->
+                <p:commandButton value="Ingresar" action="#{loginBean.login}" update="mensajes" style="margin-top: 10px;" />
+            </p:panel>
+        </div>
     </h:form>
 </h:body>
 </html>
