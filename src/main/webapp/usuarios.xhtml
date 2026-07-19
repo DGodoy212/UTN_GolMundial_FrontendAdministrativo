@@ -17,29 +17,19 @@
             </p:toolbar>
 
             <p:panel>
-                <p:dataTable var="usuario" value="[]" emptyMessage="No hay usuarios registrados.">
-
+                <p:dataTable var="usuario" value="#{usuarioBean.usuarios}" emptyMessage="No hay usuarios registrados.">
                     <p:column headerText="Nombre">
-                        <h:outputText value="-" />
+                        <h:outputText value="#{usuario.nombre}" />
                     </p:column>
-
                     <p:column headerText="Correo">
-                        <h:outputText value="-" />
+                        <h:outputText value="#{usuario.email}" />
                     </p:column>
-
                     <p:column headerText="Rol">
-                        <h:outputText value="-" />
+                        <h:outputText value="#{usuario.rol}" />
                     </p:column>
-
                     <p:column headerText="Estado">
-                        <h:outputText value="-" />
+                        <h:outputText value="#{usuario.activo ? 'Activo' : 'Inactivo'}" />
                     </p:column>
-
-                    <p:column headerText="Acciones" width="100" style="text-align: center;">
-                        <p:button icon="pi pi-pencil" styleClass="ui-button-warning ui-button-flat" title="Editar"/>
-                        <p:button icon="pi pi-trash" styleClass="ui-button-danger ui-button-flat" title="Eliminar"/>
-                    </p:column>
-
                 </p:dataTable>
             </p:panel>
         </h:form>

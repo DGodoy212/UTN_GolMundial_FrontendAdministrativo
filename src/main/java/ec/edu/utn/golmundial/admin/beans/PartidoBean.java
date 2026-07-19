@@ -18,6 +18,7 @@ public class PartidoBean implements Serializable {
     public void init() {
         partidos = new ArrayList<>();
 
+        // Datos mock de prueba
         PartidoDto mock1 = new PartidoDto();
         mock1.setId(1L);
         mock1.setFechaHoraUtc("2026-06-11T19:00:00Z");

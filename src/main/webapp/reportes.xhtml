@@ -11,16 +11,17 @@
 
         <h:form>
             <div style="display: flex; gap: 20px;">
-                <p:panel header="Estado de Partidos" style="flex: 1; text-align: center; padding: 20px;">
-                    <i class="pi pi-chart-pie" style="font-size: 3rem; color: #3498db; margin-bottom: 15px;"></i>
-                    <br/>
-                    <h:outputText value="El gráfico de partidos se cargará aquí." style="color: #7f8c8d;"/>
-                </p:panel>
+                <p:panel header="Resumen Financiero y Predicciones">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <h:outputText value="Partido con más predicciones:" style="font-weight:bold"/>
+                        <h:outputText value="#{reporteBean.reporteGeneral.partidoMasPredicciones}" />
 
-                <p:panel header="Goles por Torneo" style="flex: 1; text-align: center; padding: 20px;">
-                    <i class="pi pi-chart-bar" style="font-size: 3rem; color: #2ecc71; margin-bottom: 15px;"></i>
-                    <br/>
-                    <h:outputText value="El gráfico de rendimiento se cargará aquí." style="color: #7f8c8d;"/>
+                        <h:outputText value="Total de predicciones registradas:" style="font-weight:bold"/>
+                        <h:outputText value="#{reporteBean.reporteGeneral.totalPredicciones}" />
+
+                        <h:outputText value="UGC en circulación:" style="font-weight:bold"/>
+                        <h:outputText value="#{reporteBean.reporteGeneral.ugcEnCirculacion} Monedas" />
+                    </h:panelGrid>
                 </p:panel>
             </div>
         </h:form>

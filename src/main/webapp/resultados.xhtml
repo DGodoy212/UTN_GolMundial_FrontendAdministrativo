@@ -11,28 +11,19 @@
 
         <h:form>
             <p:panel>
-                <p:dataTable var="resultado" value="[]" emptyMessage="No hay resultados ingresados aún.">
-
+                <p:dataTable var="resultado" value="#{resultadoBean.partidosPendientes}" emptyMessage="No hay resultados ingresados aún.">
                     <p:column headerText="Partido">
-                        <h:outputText value="-" />
+                        <h:outputText value="#{resultado.seleccionLocalNombre} vs #{resultado.seleccionVisitanteNombre}" />
                     </p:column>
-
                     <p:column headerText="Goles Local">
-                        <h:outputText value="-" />
+                        <h:outputText value="#{resultado.golesLocal}" />
                     </p:column>
-
                     <p:column headerText="Goles Visitante">
-                        <h:outputText value="-" />
+                        <h:outputText value="#{resultado.golesVisitante}" />
                     </p:column>
-
-                    <p:column headerText="Estado del Partido">
-                        <h:outputText value="-" />
+                    <p:column headerText="Estado">
+                        <h:outputText value="#{resultado.estado}" />
                     </p:column>
-
-                    <p:column headerText="Acciones" width="120" style="text-align: center;">
-                        <p:button icon="pi pi-check-circle" styleClass="ui-button-success ui-button-flat" title="Validar Resultado"/>
-                    </p:column>
-
                 </p:dataTable>
             </p:panel>
         </h:form>
