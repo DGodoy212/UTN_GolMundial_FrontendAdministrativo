@@ -8,22 +8,36 @@
     <ui:define name="content">
 
         <h2 style="color: #2c3e50; margin-top: 0;">Registro de Resultados</h2>
+        <h:form id="formResultados">
 
-        <h:form>
+            <p:growl id="mensajes" showDetail="true" />
             <div class="ui-fluid">
                 <p:panel>
-                    <p:dataTable var="resultado" value="#{resultadoBean.partidosPendientes}" reflow="true" emptyMessage="No hay resultados ingresados aún.">
+                    <p:dataTable var="resultado" value="#{resultadoBean.partidosPendientes}" reflow="true" emptyMessage="No hay partidos pendientes.">
+
                         <p:column headerText="Partido">
                             <h:outputText value="#{resultado.seleccionLocalNombre} vs #{resultado.seleccionVisitanteNombre}" />
                         </p:column>
+
                         <p:column headerText="Goles Local">
-                            <h:outputText value="#{resultado.golesLocal}" />
+                            <p:spinner value="#{resultado.golesLocal}" min="0" />
                         </p:column>
+
                         <p:column headerText="Goles Visitante">
-                            <h:outputText value="#{resultado.golesVisitante}" />
+                            <p:spinner value="#{resultado.golesVisitante}" min="0" />
                         </p:column>
+
                         <p:column headerText="Estado">
                             <h:outputText value="#{resultado.estado}" />
+                        </p:column>
+
+
+                        <p:column headerText="Acciones">
+                            <p:commandButton value="Guardar"
+                                             icon="pi pi-save"
+                                             styleClass="ui-button-success"
+                                             action="#{resultadoBean.guardarResultado(resultado)}"
+                                             update="@form" />
                         </p:column>
                     </p:dataTable>
                 </p:panel>
