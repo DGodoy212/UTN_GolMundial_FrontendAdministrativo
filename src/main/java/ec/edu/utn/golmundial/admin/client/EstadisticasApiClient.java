@@ -58,4 +58,18 @@ public class EstadisticasApiClient {
             return new ArrayList<>();
         }
     }
+
+    public boolean actualizarPartido(Long id, PartidoDto partidoEditado) {
+        try (Client client = ClientBuilder.newClient()) {
+            var response = client.target(BASE_URL)
+                    .path("/admin/partidos/" + id)
+                    .request(MediaType.APPLICATION_JSON)
+                    .put(Entity.json(partidoEditado));
+
+            return response.getStatus() == 200 || response.getStatus() == 204;
+        } catch (Exception e) {
+            System.err.println("Error al actualizar partido: " + e.getMessage());
+            return false;
+        }
+    }
 }
