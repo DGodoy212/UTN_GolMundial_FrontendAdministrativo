@@ -1,10 +1,14 @@
 package ec.edu.utn.golmundial.admin.beans;
 
+import ec.edu.utn.golmundial.admin.client.EstadisticasApiClient;
+import ec.edu.utn.golmundial.admin.dto.LoginRequest;
+import ec.edu.utn.golmundial.admin.dto.LoginResponse;
 import jakarta.enterprise.context.SessionScoped;
-import jakarta.inject.Named;
-import java.io.Serializable;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import java.io.Serializable;
 
 @Named("loginBean")
 @SessionScoped
@@ -13,14 +17,24 @@ public class LoginBean implements Serializable {
     private String username;
     private String password;
 
-    // Metodo mock para simular el login
+    // Inyectamos nuestro cliente estrella
+    @Inject
+    private EstadisticasApiClient apiClient;
+
     public String login() {
-        if ("admin".equals(username) && "admin".equals(password)) {
+        LoginRequest request = new LoginRequest();
+        request.setUsername(username);
+        request.setPassword(password);
+
+        LoginResponse response = apiClient.autenticar(request);
+
+        if (response != null && response.getToken() != null) {
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("token", response.getToken());
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioAdminId", response.getUsuarioId());
             return "dashboard?faces-redirect=true";
         }
-        // Mensaje de error
         FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Acceso Denegado", "Usuario o contraseña incorrectos."));
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Acceso Denegado", "Usuario o contraseña incorrectos o servidor apagado."));
         return null;
     }
 

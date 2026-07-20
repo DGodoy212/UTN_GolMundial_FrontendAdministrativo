@@ -3,6 +3,8 @@ package ec.edu.utn.golmundial.admin.client;
 import ec.edu.utn.golmundial.admin.dto.AuditoriaDto;
 import ec.edu.utn.golmundial.admin.dto.PartidoDto;
 import ec.edu.utn.golmundial.admin.dto.ResultadoPartidoRequest;
+import ec.edu.utn.golmundial.admin.dto.LoginRequest;
+import ec.edu.utn.golmundial.admin.dto.LoginResponse;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
@@ -70,6 +72,25 @@ public class EstadisticasApiClient {
         } catch (Exception e) {
             System.err.println("Error al actualizar partido: " + e.getMessage());
             return false;
+        }
+    }
+
+    // Metodo para validar credenciales (POST /auth/login)
+    public LoginResponse autenticar(LoginRequest request) {
+        try (Client client = ClientBuilder.newClient()) {
+            var response = client.target(BASE_URL)
+                    .path("/auth/login")
+                    .request(MediaType.APPLICATION_JSON)
+                    .post(Entity.json(request));
+            if (response.getStatus() == 200) {
+                return response.readEntity(LoginResponse.class);
+            } else {
+                System.err.println("Credenciales incorrectas o error en el backend. Status: " + response.getStatus());
+                return null;
+            }
+        } catch (Exception e) {
+            System.err.println("Error grave de conexión en el Login: " + e.getMessage());
+            return null;
         }
     }
 }
