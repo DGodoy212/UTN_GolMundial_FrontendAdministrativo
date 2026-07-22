@@ -20,7 +20,7 @@ public class EstadisticasApiClient {
 
     // IMPORTANTE: Esta URL debe coincidir con el backend Estadisticas
     // Puede ser https://localhost:7001/api o http://localhost:7001/api
-    private static final String BASE_URL = "http://localhost:7001/api";
+    private static final String BASE_URL = "http://172.20.136.192:7001/GolMundial-Estadisticas-1.0-SNAPSHOT/api";
 
     public List<PartidoDto> obtenerPartidos() {
         try (Client client = ClientBuilder.newClient()) {

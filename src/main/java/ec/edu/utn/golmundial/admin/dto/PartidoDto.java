@@ -26,6 +26,8 @@ public class PartidoDto {
     private Integer golesLocal;
     private Integer golesVisitante;
 
+    private Long ganadorPenalesId;
+
     public Long getId() {
         return id;
     }
@@ -176,5 +178,13 @@ public class PartidoDto {
 
     public void setGolesVisitante(Integer golesVisitante) {
         this.golesVisitante = golesVisitante;
+    }
+
+    public Long getGanadorPenalesId() {
+        return ganadorPenalesId;
+    }
+
+    public void setGanadorPenalesId(Long ganadorPenalesId) {
+        this.ganadorPenalesId = ganadorPenalesId;
     }
 }

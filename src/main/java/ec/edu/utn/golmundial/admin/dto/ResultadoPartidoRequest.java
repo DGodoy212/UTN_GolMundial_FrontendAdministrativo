@@ -4,6 +4,7 @@ public class ResultadoPartidoRequest {
     private Integer golesLocal;
     private Integer golesVisitante;
     private Long usuarioAdminId;
+    private Long ganadorPenalesId;
 
     public Integer getGolesLocal() {
         return golesLocal;
@@ -27,5 +28,13 @@ public class ResultadoPartidoRequest {
 
     public void setUsuarioAdminId(Long usuarioAdminId) {
         this.usuarioAdminId = usuarioAdminId;
+    }
+
+    public Long getGanadorPenalesId() {
+        return ganadorPenalesId;
+    }
+
+    public void setGanadorPenalesId(Long ganadorPenalesId) {
+        this.ganadorPenalesId = ganadorPenalesId;
     }
 }

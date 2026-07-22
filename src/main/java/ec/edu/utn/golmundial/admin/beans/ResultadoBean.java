@@ -41,9 +41,17 @@ public class ResultadoBean implements Serializable {
         ResultadoPartidoRequest request = new ResultadoPartidoRequest();
         request.setGolesLocal(partido.getGolesLocal());
         request.setGolesVisitante(partido.getGolesVisitante());
+        request.setGanadorPenalesId(partido.getGanadorPenalesId());
 
-        // Por ahora quemamos el ID del admin (1L) para pruebas
-        request.setUsuarioAdminId(1L);
+        Long adminId = (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioAdminId");
+
+        if (adminId == null) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error de Sesión", "Tu sesión ha expirado. Vuelve a iniciar sesión."));
+            return;
+        }
+
+        request.setUsuarioAdminId(adminId);
         boolean exito = apiClient.registrarResultado(partido.getId(), request);
         if (exito) {
             FacesContext.getCurrentInstance().addMessage(null,
