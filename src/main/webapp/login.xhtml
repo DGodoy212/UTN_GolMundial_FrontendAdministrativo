@@ -20,7 +20,6 @@
 </h:head>
 <h:body>
     <h:form>
-        <!-- Esta etiqueta mostrará la caja roja de error -->
         <p:messages id="mensajes" showDetail="true" closable="true" />
 
         <div class="ui-fluid">
@@ -33,7 +32,6 @@
                     <p:password id="password" value="#{loginBean.password}" required="true" />
                 </h:panelGrid>
 
-                <!-- Le agregamos update="mensajes" al botón -->
                 <p:commandButton value="Ingresar" action="#{loginBean.login}" update="mensajes" style="margin-top: 10px;" />
             </p:panel>
         </div>

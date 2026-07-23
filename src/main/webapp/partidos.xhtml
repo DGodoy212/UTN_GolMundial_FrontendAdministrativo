@@ -10,12 +10,30 @@
 
         <h2 style="color: #2c3e50; margin-top: 0;">Gestión de Partidos</h2>
         <h:form id="formPartidos">
-
             <p:growl id="mensajes" showDetail="true" />
+
+            <p:toolbar style="margin-bottom: 15px;">
+                <p:toolbarGroup>
+                    <p:commandButton value="Nuevo Partido"
+                                     icon="pi pi-plus"
+                                     styleClass="ui-button-success"
+                                     actionListener="#{partidoBean.prepararNuevo}"
+                                     oncomplete="PF('dialogoNuevo').show()"
+                                     update=":formNuevoPartido"/>
+                </p:toolbarGroup>
+            </p:toolbar>
 
             <p:panel>
                 <div class="ui-fluid">
                     <p:dataTable var="partido" value="#{partidoBean.partidos}" reflow="true" emptyMessage="No hay partidos programados aún.">
+
+                        <p:column headerText="Fase">
+                            <h:outputText value="#{partido.fase}" />
+                        </p:column>
+
+                        <p:column headerText="Grupo">
+                            <h:outputText value="#{partido.grupo}" />
+                        </p:column>
 
                         <p:column headerText="Fecha">
                             <h:outputText value="#{partido.fechaHoraUtc}" />
@@ -38,7 +56,6 @@
                         </p:column>
 
                         <p:column headerText="Acciones" width="120" style="text-align: center;">
-                            <!-- commandButton levanta el modal y setea el partido seleccionado -->
                             <p:commandButton icon="pi pi-pencil"
                                              styleClass="ui-button-warning ui-button-flat"
                                              title="Editar"
@@ -46,9 +63,6 @@
                                              update=":formPartidos:modalEdicion">
                                 <f:setPropertyActionListener value="#{partido}" target="#{partidoBean.partidoSeleccionado}" />
                             </p:commandButton>
-
-                            <!-- Nota técnica: El contrato no tiene endpoint para borrar partidos, así que te lo dejé visual pero inactivo por seguridad -->
-                            <p:commandButton icon="pi pi-trash" styleClass="ui-button-danger ui-button-flat" title="Eliminar" disabled="true" />
                         </p:column>
                     </p:dataTable>
                 </div>
@@ -79,6 +93,44 @@
             </p:dialog>
 
         </h:form>
+
+        <!-- Diálogo modal para registrar nuevo partido -->
+        <p:dialog id="dlgNuevoPartido" header="Registrar Nuevo Partido" widgetVar="dialogoNuevo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+            <h:form id="formNuevoPartido">
+                <p:outputPanel style="text-align:center;">
+                    <p:panelGrid columns="2" columnClasses="label,value">
+                        <h:outputText value="Fase:" />
+                        <p:inputText value="#{partidoBean.nuevoPartido.fase}" />
+
+                        <h:outputText value="Grupo:" />
+                        <p:inputText value="#{partidoBean.nuevoPartido.grupo}" />
+
+                        <h:outputText value="ID Selección Local:" />
+                        <p:spinner value="#{partidoBean.nuevoPartido.seleccionLocalId}" min="1" />
+
+                        <h:outputText value="ID Selección Visitante:" />
+                        <p:spinner value="#{partidoBean.nuevoPartido.seleccionVisitanteId}" min="1" />
+
+                        <h:outputText value="Fecha y Hora (UTC):" />
+                        <p:inputText value="#{partidoBean.nuevoPartido.fechaHoraUtc}" placeholder="2026-06-11T19:00:00Z" />
+
+                        <h:outputText value="ID Sede:" />
+                        <p:spinner value="#{partidoBean.nuevoPartido.sedeId}" min="1" />
+
+                        <h:outputText value="Estado inicial:" />
+                        <p:selectOneMenu value="#{partidoBean.nuevoPartido.estado}">
+                            <f:selectItem itemLabel="Programado" itemValue="PROGRAMADO" />
+                            <f:selectItem itemLabel="En Juego" itemValue="EN_JUEGO" />
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:divider />
+                    <p:commandButton value="Guardar" icon="pi pi-check" action="#{partidoBean.guardarNuevoPartido}"
+                                     update=":formPartidos" oncomplete="PF('dialogoNuevo').hide()" />
+                    <p:commandButton value="Cancelar" icon="pi pi-times" onclick="PF('dialogoNuevo').hide()" type="button"
+                                     styleClass="ui-button-secondary" />
+                </p:outputPanel>
+            </h:form>
+        </p:dialog>
 
     </ui:define>
 </ui:composition>

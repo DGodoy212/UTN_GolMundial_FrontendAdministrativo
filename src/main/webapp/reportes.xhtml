@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="jakarta.faces.facelets"
       xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
       xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="template.xhtml">
@@ -20,7 +21,9 @@
                         <h:outputText value="#{reporteBean.reporteGeneral.totalPredicciones}" />
 
                         <h:outputText value="UGC en circulación:" style="font-weight:bold"/>
-                        <h:outputText value="#{reporteBean.reporteGeneral.ugcEnCirculacion} Monedas" />
+                        <h:outputText value="#{reporteBean.reporteGeneral.ugcEnCirculacion}">
+                            <f:convertNumber pattern="#,##0.00" />
+                        </h:outputText>
                     </h:panelGrid>
                 </p:panel>
             </div>

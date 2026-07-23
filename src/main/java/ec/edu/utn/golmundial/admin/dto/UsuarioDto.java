@@ -5,6 +5,7 @@ public class UsuarioDto {
     private String username;
     private String nombre;
     private String email;
+    private String password;
     private String rol;
     private Boolean activo;
     private String fechaCreacion;
@@ -63,5 +64,13 @@ public class UsuarioDto {
 
     public void setFechaCreacion(String fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
